@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Deplacements list</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Destination</th>
+                <th>Mission</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for deplacement in deplacements %}
+            <tr>
+                <td><a href="{{ path('deplacement_show', { 'id': deplacement.id }) }}">{{ deplacement.id }}</a></td>
+                <td>{{ deplacement.destination }}</td>
+                <td>{{ deplacement.mission }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('deplacement_show', { 'id': deplacement.id }) }}"><span class="glyphicon glyphicon-eye-open"></span> show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('deplacement_edit', { 'id': deplacement.id }) }}"><span class="glyphicon glyphicon-edit"></span> edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('deplacement_new') }}">Create a new deplacement</a>
+        </li>
+    </ul>
+{% endblock %}
